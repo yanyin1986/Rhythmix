@@ -1,0 +1,9 @@
+//
+//  Rhythmix-PreComplier.pch
+//  Rhythmix
+//
+//  Created by yin.yan on 7/7/15.
+//  Copyright © 2015 tinycomic. All rights reserved.
+//
+
+#include "CommonKit.h"

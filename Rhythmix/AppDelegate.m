@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "AssetPickerViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,10 +21,12 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    ViewController *controller = [[ViewController alloc] init];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:controller
-                                  ];
+    //ViewController *controller = [[ViewController alloc] init];
+    AssetPickerViewController *assetPickerViewController = [[AssetPickerViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:assetPickerViewController];
+    [nc setNavigationBarHidden:YES];
     self.window.rootViewController = nc;
+    
     [self.window makeKeyAndVisible];
     
     return YES;

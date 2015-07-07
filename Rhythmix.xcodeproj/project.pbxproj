@@ -51,6 +51,13 @@
 		BA6C014F1B308AEB007B935F /* 33.JPG in Resources */ = {isa = PBXBuildFile; fileRef = BA6C01431B308AEB007B935F /* 33.JPG */; };
 		BA6C01501B308AEB007B935F /* 34.JPG in Resources */ = {isa = PBXBuildFile; fileRef = BA6C01441B308AEB007B935F /* 34.JPG */; };
 		BA8E49461B43C95F00217724 /* CGGeometry+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8E49451B43C95F00217724 /* CGGeometry+Utils.m */; };
+		BAC588F61B4BB9D800519235 /* AssetPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC588F41B4BB9D800519235 /* AssetPickerViewController.m */; };
+		BAC588F71B4BB9D800519235 /* AssetPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC588F51B4BB9D800519235 /* AssetPickerViewController.xib */; };
+		BAC588FB1B4BBB1F00519235 /* GlobalSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC588FA1B4BBB1F00519235 /* GlobalSetting.m */; };
+		BAC588FE1B4BBB5A00519235 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC588FD1B4BBB5A00519235 /* AssetsLibrary.framework */; };
+		BAD50D4D1B4BBF370008B061 /* AssetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD50D4B1B4BBF370008B061 /* AssetCollectionViewCell.m */; };
+		BAD50D4E1B4BBF370008B061 /* AssetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAD50D4C1B4BBF370008B061 /* AssetCollectionViewCell.xib */; };
+		BAD50D511B4BC8D50008B061 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD50D501B4BC8D50008B061 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +122,19 @@
 		BA6C01441B308AEB007B935F /* 34.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 34.JPG; sourceTree = "<group>"; };
 		BA8E49441B43C95F00217724 /* CGGeometry+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+Utils.h"; sourceTree = "<group>"; };
 		BA8E49451B43C95F00217724 /* CGGeometry+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+Utils.m"; sourceTree = "<group>"; };
+		BAC588F31B4BB9D800519235 /* AssetPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetPickerViewController.h; path = Picker/AssetPickerViewController.h; sourceTree = "<group>"; };
+		BAC588F41B4BB9D800519235 /* AssetPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetPickerViewController.m; path = Picker/AssetPickerViewController.m; sourceTree = "<group>"; };
+		BAC588F51B4BB9D800519235 /* AssetPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AssetPickerViewController.xib; path = Picker/AssetPickerViewController.xib; sourceTree = "<group>"; };
+		BAC588F91B4BBB1F00519235 /* GlobalSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalSetting.h; path = Common/GlobalSetting.h; sourceTree = "<group>"; };
+		BAC588FA1B4BBB1F00519235 /* GlobalSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalSetting.m; path = Common/GlobalSetting.m; sourceTree = "<group>"; };
+		BAC588FD1B4BBB5A00519235 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		BAC588FF1B4BBD8C00519235 /* CommonKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CommonKit.h; path = Common/CommonKit.h; sourceTree = "<group>"; };
+		BAD50D491B4BBDDA0008B061 /* Rhythmix-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Rhythmix-Prefix.pch"; path = "Common/Rhythmix-Prefix.pch"; sourceTree = "<group>"; };
+		BAD50D4A1B4BBF370008B061 /* AssetCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetCollectionViewCell.h; path = Picker/AssetCollectionViewCell.h; sourceTree = "<group>"; };
+		BAD50D4B1B4BBF370008B061 /* AssetCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetCollectionViewCell.m; path = Picker/AssetCollectionViewCell.m; sourceTree = "<group>"; };
+		BAD50D4C1B4BBF370008B061 /* AssetCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AssetCollectionViewCell.xib; path = Picker/AssetCollectionViewCell.xib; sourceTree = "<group>"; };
+		BAD50D4F1B4BC8D50008B061 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = CustomView/MBProgressHUD.h; sourceTree = "<group>"; };
+		BAD50D501B4BC8D50008B061 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = CustomView/MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAC588FE1B4BBB5A00519235 /* AssetsLibrary.framework in Frameworks */,
 				BA6C01091B307D93007B935F /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +179,9 @@
 		BA6C00DF1B3072EB007B935F /* Rhythmix */ = {
 			isa = PBXGroup;
 			children = (
+				BAD50D521B4BC8DA0008B061 /* CustomView */,
+				BAC588FC1B4BBB2400519235 /* Common */,
+				BAC588F81B4BB9DD00519235 /* Picker */,
 				BA8E49441B43C95F00217724 /* CGGeometry+Utils.h */,
 				BA8E49451B43C95F00217724 /* CGGeometry+Utils.m */,
 				BA6C00E41B3072EB007B935F /* AppDelegate.h */,
@@ -236,9 +260,43 @@
 		BA6C010A1B307D96007B935F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BAC588FD1B4BBB5A00519235 /* AssetsLibrary.framework */,
 				BA6C01081B307D93007B935F /* AVFoundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BAC588F81B4BB9DD00519235 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				BAC588F31B4BB9D800519235 /* AssetPickerViewController.h */,
+				BAC588F41B4BB9D800519235 /* AssetPickerViewController.m */,
+				BAC588F51B4BB9D800519235 /* AssetPickerViewController.xib */,
+				BAD50D4A1B4BBF370008B061 /* AssetCollectionViewCell.h */,
+				BAD50D4B1B4BBF370008B061 /* AssetCollectionViewCell.m */,
+				BAD50D4C1B4BBF370008B061 /* AssetCollectionViewCell.xib */,
+			);
+			name = Picker;
+			sourceTree = "<group>";
+		};
+		BAC588FC1B4BBB2400519235 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BAD50D491B4BBDDA0008B061 /* Rhythmix-Prefix.pch */,
+				BAC588F91B4BBB1F00519235 /* GlobalSetting.h */,
+				BAC588FA1B4BBB1F00519235 /* GlobalSetting.m */,
+				BAC588FF1B4BBD8C00519235 /* CommonKit.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		BAD50D521B4BC8DA0008B061 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				BAD50D4F1B4BC8D50008B061 /* MBProgressHUD.h */,
+				BAD50D501B4BC8D50008B061 /* MBProgressHUD.m */,
+			);
+			name = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,8 +403,10 @@
 				BA6C01071B3077F9007B935F /* ViewController.xib in Resources */,
 				BA6C012C1B30888F007B935F /* 10.JPG in Resources */,
 				BA6C01311B30888F007B935F /* 15.JPG in Resources */,
+				BAC588F71B4BB9D800519235 /* AssetPickerViewController.xib in Resources */,
 				BA6C01361B30888F007B935F /* 20.JPG in Resources */,
 				BA6C01471B308AEB007B935F /* 25.JPG in Resources */,
+				BAD50D4E1B4BBF370008B061 /* AssetCollectionViewCell.xib in Resources */,
 				BA6C01301B30888F007B935F /* 14.JPG in Resources */,
 				BA6C012F1B30888F007B935F /* 13.JPG in Resources */,
 				BA6C01341B30888F007B935F /* 18.JPG in Resources */,
@@ -377,9 +437,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA6C00E91B3072EB007B935F /* ViewController.m in Sources */,
+				BAC588F61B4BB9D800519235 /* AssetPickerViewController.m in Sources */,
+				BAD50D4D1B4BBF370008B061 /* AssetCollectionViewCell.m in Sources */,
 				BA6C00E61B3072EB007B935F /* AppDelegate.m in Sources */,
 				BA6C00E31B3072EB007B935F /* main.m in Sources */,
 				BA8E49461B43C95F00217724 /* CGGeometry+Utils.m in Sources */,
+				BAC588FB1B4BBB1F00519235 /* GlobalSetting.m in Sources */,
+				BAD50D511B4BC8D50008B061 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +561,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rhythmix/Common/Rhythmix-Prefix.pch";
 				INFOPLIST_FILE = Rhythmix/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -508,6 +574,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rhythmix/Common/Rhythmix-Prefix.pch";
 				INFOPLIST_FILE = Rhythmix/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
