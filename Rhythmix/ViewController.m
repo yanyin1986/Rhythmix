@@ -68,7 +68,6 @@
     ResultViewController *resultViewController = [[ResultViewController alloc] init];
     resultViewController.keyframes = self.keyFrames;//[NSArray arrayWithArray:];
     
-    
     [self.navigationController pushViewController:resultViewController animated:YES];
 }
 
@@ -135,15 +134,16 @@
 
 - (IBAction)tapHandler:(id)sender
 {
-    [self effect];
+    [self effect:nil];
 }
 
 /**
  * next image
  *
  */
-- (void)swipe
+- (IBAction)swipe:(id)sender
 {
+    /*
     if (_start && _inTitle) {
         
         CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -159,7 +159,9 @@
             _inTitle = NO;
         });
         return;
-    } else if (_start) {
+    } else 
+     */
+    if (_start) {
         long nextIndex = _index + 1;//) % 34;
         
         [self addKeyFrameWithAction:KeyFrameActionChange];
@@ -190,7 +192,7 @@
 /**
  * 添加effect效果
  */
-- (void)effect
+- (IBAction)effect:(id)sender
 {
     _zPosition ++;
     if (_previewView.layer.sublayers.count > 0) {
@@ -229,7 +231,7 @@
 {
     switch (sender.state) {
         case UIGestureRecognizerStateEnded:
-            [self swipe];
+            [self swipe:nil];
             break;
         
         default:

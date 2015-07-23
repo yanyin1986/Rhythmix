@@ -9,9 +9,14 @@
 #import "ResultViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Keyframe.h"
+#import "GlobalSetting.h"
 
 @interface ResultViewController ()
-
+{
+    NSMutableArray      *_times;
+    NSUInteger           _timeCount;
+    NSTimeInterval       _duration;
+}
 
 @end
 
@@ -21,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self sortTimes];
-//    [self export];
+    [self writeMOV];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,27 +35,58 @@
     
 }
 
-- (void)sortTimes
+- (void)dealloc
 {
-    
 }
 
-- (void)export
+- (void)sortTimes
+{
+    KeyFrame *beginFrame = _keyframes[0];
+    double beginTime = beginFrame.time;
+    
+    _times = [NSMutableArray array];
+    _timeCount = _keyframes.count - 1;
+    
+    for(NSInteger i = 0; i < _timeCount; i++) {
+        KeyFrame *frame = _keyframes[i];
+        if (i != 0) {
+            // 0.2 time fix for humen reflection
+            [_times addObject:@(frame.time - beginTime - 0.2)];
+        }
+//        CMTime currentTime = CMTimeMakeWithSeconds(frame.time - beginTime, 120); // fps?
+        if (i == _timeCount - 1) {
+            //_duration =  frame.time - beginTime;
+        }
+    }
+    
+    _duration = [[_times lastObject] doubleValue];
+}
+
+- (void)writeMOV
 {
     NSString *documentsDirectory = [NSHomeDirectory()
                                     stringByAppendingPathComponent:@"Documents"];
     NSString *videoOutputPath = [documentsDirectory stringByAppendingPathComponent:@"test_output.mov"];
+    [[NSFileManager defaultManager] removeItemAtPath:videoOutputPath error:nil];
     NSURL *file = [NSURL fileURLWithPath:videoOutputPath];
     AVAssetWriter *videoWriter = [[AVAssetWriter alloc] initWithURL:file
                                                            fileType:AVFileTypeQuickTimeMovie
                                                               error:nil];
     NSParameterAssert(videoWriter);
     
-    NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *videoSettings =
+    @{
+      AVVideoCodecKey  : AVVideoCodecH264,
+      AVVideoWidthKey  : @(640),
+      AVVideoHeightKey : @(640),
+      };
+    
+    /*[NSDictionary dictionaryWithObjectsAndKeys:
                                    AVVideoCodecH264, AVVideoCodecKey,
                                    [NSNumber numberWithInt:640], AVVideoWidthKey,
                                    [NSNumber numberWithInt:640], AVVideoHeightKey,
                                    nil];
+     */
     
     AVAssetWriterInput* videoWriterInput = [AVAssetWriterInput
                                             assetWriterInputWithMediaType:AVMediaTypeVideo
@@ -70,26 +106,47 @@
     [videoWriter startWriting];
     [videoWriter startSessionAtSourceTime:kCMTimeZero];
     
-    KeyFrame *firstKeyFrame = _keyframes[0];
-    double beginTime = firstKeyFrame.time;
+//    CMTime beginTime = _times[0];
     
-    CVPixelBufferRef buffer = NULL;
+    ALAsset* asset = [[GlobalSetting sharedInstance] assetWithIndex:0];
+//    asset.defaultRepresentation.fullScreenImage
+    CVPixelBufferRef buffer = [self pixelBufferFromCGImage:asset.defaultRepresentation.fullScreenImage];
     NSUInteger assetIndex = 0;
     
-    NSMutableArray *changTimes = [NSMutableArray array];
-    double duration = 0;
-    for (int i = 1; i < _keyframes.count; i++) {
-        KeyFrame *kf = _keyframes[i];
-        if (kf.action == KeyFrameActionChange || KeyFrameActionEnd) {
-            double d = kf.time - beginTime;
-            [changTimes addObject:@(d)];
+//    double duration = CMTimeGetSeconds(_duration);
+    double frame = 30 * _duration;
+    
+    for (int i = 0; i < frame; i++) {
+        double time = i / 30.0;
+        BOOL needChangeBuffer = NO;
+        if (assetIndex < _timeCount) {
+            NSTimeInterval t1 = [_times[assetIndex + 1] doubleValue];
             
-            if (d > duration) {
-                duration = d;
+            if (time >= t1) {
+                NSLog(@"go to next!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                assetIndex++;
+                needChangeBuffer = YES;
+            } else {
+                
             }
         }
+        NSLog(@"frame[%d] -> time [%g] -> assetIndex[%d]", i, time, assetIndex);
+        
+        if (needChangeBuffer) {
+            CVPixelBufferRelease(buffer);
+            ALAsset *asset = [[GlobalSetting sharedInstance] assetWithIndex:assetIndex];
+            buffer = [self pixelBufferFromCGImage:asset.defaultRepresentation.fullScreenImage];
+        }
+        if (adaptor.assetWriterInput.readyForMoreMediaData) {
+            [adaptor appendPixelBuffer:buffer withPresentationTime:CMTimeMake(i, 30)];
+        }
     }
-    
+    [videoWriterInput markAsFinished];
+    [videoWriter finishWritingWithCompletionHandler:^{
+        NSLog(@"!!finish");
+        [self export];
+    }];
+    /*
     int keyTimeIndex = 0;
     double fps = 30;
     double frameDuration = fps * duration;
@@ -119,6 +176,7 @@
         
         NSLog(@"frame [%d] at time [%g] -> index [%d]", i, time, keyTimeIndex);
     }
+     */
     
     /*
     //convert uiimage to CGImage.
@@ -169,10 +227,52 @@
      */
 }
 
+- (void)export
+{
+    // video
+    AVMutableComposition *composition = [AVMutableComposition composition];
+    AVMutableCompositionTrack *videoTrack = [composition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+    
+    NSString *documentsDirectory = [NSHomeDirectory()
+                                    stringByAppendingPathComponent:@"Documents"];
+    NSString *videoOutputPath = [documentsDirectory stringByAppendingPathComponent:@"test_output.mov"];
+    NSURL *file = [NSURL fileURLWithPath:videoOutputPath];
+
+    AVURLAsset *videoAsset = [AVURLAsset assetWithURL:file];
+    CMTime duration = [videoAsset duration];
+    
+    AVAssetTrack *videoAssetTrack = [videoAsset tracksWithMediaType:AVMediaTypeVideo][0];
+    [videoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, duration) ofTrack:videoAssetTrack atTime:kCMTimeZero error:nil];
+    
+    // audio
+    AVMutableCompositionTrack *audioTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+    NSURL *music = [[NSBundle mainBundle] URLForResource:@"run" withExtension:@"mp3"];
+    AVURLAsset *audioAsset = [AVURLAsset assetWithURL:music];
+    
+    AVAssetTrack *audioAssetTrack = [audioAsset tracksWithMediaType:AVMediaTypeAudio][0];
+    [audioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, duration) ofTrack:audioAssetTrack atTime:kCMTimeZero error:nil];
+    
+    NSString *mp4Path = [documentsDirectory stringByAppendingPathComponent:@"test_output.mp4"];
+    [[NSFileManager defaultManager] removeItemAtPath:mp4Path error:nil];
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:composition presetName:AVAssetExportPresetHighestQuality];
+    exportSession.outputURL = [NSURL fileURLWithPath:mp4Path];
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    exportSession.shouldOptimizeForNetworkUse = YES;
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        NSLog(@"export finished!!!");
+        
+        ALAssetsLibrary *lib = [[ALAssetsLibrary alloc] init];
+        [lib writeVideoAtPathToSavedPhotosAlbum:[NSURL fileURLWithPath:mp4Path] completionBlock:^(NSURL *assetURL, NSError *error) {
+            NSLog(@"!!!! save OK!!!");
+        }];
+    }];
+    
+}
+
 /*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, you will ofte n want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
