@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8164.2" systemVersion="15A226f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AssetPickerViewController">
@@ -18,13 +18,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJs-gk-HEh">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzg-iN-XaN">
-                            <rect key="frame" x="274" y="14" width="46" height="30"/>
+                            <rect key="frame" x="274" y="22" width="46" height="40"/>
                             <animations/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="f8K-Hw-yzi"/>
+                                <constraint firstAttribute="height" constant="40" id="f8K-Hw-yzi"/>
                                 <constraint firstAttribute="width" constant="46" id="lI0-TM-7hT"/>
                             </constraints>
                             <state key="normal" title="next"/>
@@ -36,13 +36,13 @@
                     <animations/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="9m0-Q0-a5t"/>
+                        <constraint firstAttribute="height" constant="62" id="9m0-Q0-a5t"/>
                         <constraint firstAttribute="trailing" secondItem="Bzg-iN-XaN" secondAttribute="trailing" id="loD-O4-KnS"/>
                         <constraint firstAttribute="bottom" secondItem="Bzg-iN-XaN" secondAttribute="bottom" id="qq5-vD-XY1"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VoM-Nb-DVA">
-                    <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                    <rect key="frame" x="0.0" y="62" width="320" height="506"/>
                     <animations/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="d1n-Bx-836">
                         <size key="itemSize" width="75" height="75"/>
@@ -63,7 +63,7 @@
                 <constraint firstItem="BJs-gk-HEh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Cp1-Wk-eez"/>
                 <constraint firstItem="VoM-Nb-DVA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CwB-Gj-xkl"/>
                 <constraint firstAttribute="trailing" secondItem="VoM-Nb-DVA" secondAttribute="trailing" id="FOk-So-5jP"/>
-                <constraint firstItem="VoM-Nb-DVA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="P9k-uf-AnC"/>
+                <constraint firstItem="VoM-Nb-DVA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="62" id="P9k-uf-AnC"/>
                 <constraint firstAttribute="bottom" secondItem="VoM-Nb-DVA" secondAttribute="bottom" id="TxC-l1-Wyd"/>
                 <constraint firstItem="BJs-gk-HEh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xMR-dh-oUh"/>
             </constraints>

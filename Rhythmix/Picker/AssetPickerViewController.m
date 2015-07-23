@@ -91,7 +91,10 @@
         if ([group numberOfAssets] > 0) {
             [group enumerateAssetsWithOptions:NSEnumerationReverse usingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
                 if (result) {
-                    if (![assetsSet containsObject:result.defaultRepresentation.url]) {
+                    if (result.defaultRepresentation
+                            && result.defaultRepresentation.url
+                            && ![assetsSet containsObject:result.defaultRepresentation.url])
+                    {
                         [assetsSet addObject:result.defaultRepresentation.url];
                         [assetsArray addObject:result];
                     } else {

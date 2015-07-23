@@ -56,6 +56,10 @@
 		BAC588FE1B4BBB5A00519235 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC588FD1B4BBB5A00519235 /* AssetsLibrary.framework */; };
 		BAC9CD5C1B5F9F19008644B9 /* RMPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC9CD5B1B5F9F19008644B9 /* RMPreviewView.m */; };
 		BAC9CD5E1B5FA9E6008644B9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAC9CD5D1B5FA9E6008644B9 /* OpenGLES.framework */; };
+		BAC9CD621B60E63A008644B9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC9CD601B60E63A008644B9 /* HomeViewController.m */; };
+		BAC9CD631B60E63A008644B9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC9CD611B60E63A008644B9 /* HomeViewController.xib */; };
+		BAC9CD671B60E7BC008644B9 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC9CD651B60E7BC008644B9 /* SettingViewController.m */; };
+		BAC9CD681B60E7BC008644B9 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAC9CD661B60E7BC008644B9 /* SettingViewController.xib */; };
 		BAD50D4D1B4BBF370008B061 /* AssetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD50D4B1B4BBF370008B061 /* AssetCollectionViewCell.m */; };
 		BAD50D4E1B4BBF370008B061 /* AssetCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAD50D4C1B4BBF370008B061 /* AssetCollectionViewCell.xib */; };
 		BAD50D511B4BC8D50008B061 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD50D501B4BC8D50008B061 /* MBProgressHUD.m */; };
@@ -124,6 +128,12 @@
 		BAC9CD5A1B5F9F19008644B9 /* RMPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPreviewView.h; path = CustomView/RMPreviewView.h; sourceTree = "<group>"; };
 		BAC9CD5B1B5F9F19008644B9 /* RMPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPreviewView.m; path = CustomView/RMPreviewView.m; sourceTree = "<group>"; };
 		BAC9CD5D1B5FA9E6008644B9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		BAC9CD5F1B60E63A008644B9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		BAC9CD601B60E63A008644B9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		BAC9CD611B60E63A008644B9 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		BAC9CD641B60E7BC008644B9 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		BAC9CD651B60E7BC008644B9 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		BAC9CD661B60E7BC008644B9 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		BAD50D491B4BBDDA0008B061 /* Rhythmix-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Rhythmix-Prefix.pch"; path = "Common/Rhythmix-Prefix.pch"; sourceTree = "<group>"; };
 		BAD50D4A1B4BBF370008B061 /* AssetCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AssetCollectionViewCell.h; path = Picker/AssetCollectionViewCell.h; sourceTree = "<group>"; };
 		BAD50D4B1B4BBF370008B061 /* AssetCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AssetCollectionViewCell.m; path = Picker/AssetCollectionViewCell.m; sourceTree = "<group>"; };
@@ -185,6 +195,12 @@
 				BA6C00E71B3072EB007B935F /* ViewController.h */,
 				BA6C00E81B3072EB007B935F /* ViewController.m */,
 				BA6C01061B3077F9007B935F /* ViewController.xib */,
+				BAC9CD5F1B60E63A008644B9 /* HomeViewController.h */,
+				BAC9CD601B60E63A008644B9 /* HomeViewController.m */,
+				BAC9CD611B60E63A008644B9 /* HomeViewController.xib */,
+				BAC9CD641B60E7BC008644B9 /* SettingViewController.h */,
+				BAC9CD651B60E7BC008644B9 /* SettingViewController.m */,
+				BAC9CD661B60E7BC008644B9 /* SettingViewController.xib */,
 				BA6C00ED1B3072EB007B935F /* Images.xcassets */,
 				BA6C00EF1B3072EB007B935F /* LaunchScreen.xib */,
 				BA6C00E01B3072EB007B935F /* Supporting Files */,
@@ -364,12 +380,14 @@
 				BA6C01351B30888F007B935F /* 19.JPG in Resources */,
 				BA6C01481B308AEB007B935F /* 26.JPG in Resources */,
 				BA6C01241B30888F007B935F /* 2.JPG in Resources */,
+				BAC9CD631B60E63A008644B9 /* HomeViewController.xib in Resources */,
 				BA6C01251B30888F007B935F /* 3.JPG in Resources */,
 				BA6C014A1B308AEB007B935F /* 28.JPG in Resources */,
 				BA6C01331B30888F007B935F /* 17.JPG in Resources */,
 				BA6C01461B308AEB007B935F /* 24.JPG in Resources */,
 				BA6C01501B308AEB007B935F /* 34.JPG in Resources */,
 				BA6C014E1B308AEB007B935F /* 32.JPG in Resources */,
+				BAC9CD681B60E7BC008644B9 /* SettingViewController.xib in Resources */,
 				BA6C014C1B308AEB007B935F /* 30.JPG in Resources */,
 				BA6C012D1B30888F007B935F /* 11.JPG in Resources */,
 				BA6C00F11B3072EB007B935F /* LaunchScreen.xib in Resources */,
@@ -412,6 +430,7 @@
 			files = (
 				BA6C00E91B3072EB007B935F /* ViewController.m in Sources */,
 				BAC588F61B4BB9D800519235 /* AssetPickerViewController.m in Sources */,
+				BAC9CD671B60E7BC008644B9 /* SettingViewController.m in Sources */,
 				BAD50D4D1B4BBF370008B061 /* AssetCollectionViewCell.m in Sources */,
 				BA6C00E61B3072EB007B935F /* AppDelegate.m in Sources */,
 				BA6C00E31B3072EB007B935F /* main.m in Sources */,
@@ -421,6 +440,7 @@
 				BAD50D561B4BD8050008B061 /* ResultViewController.m in Sources */,
 				BAC9CD5C1B5F9F19008644B9 /* RMPreviewView.m in Sources */,
 				BAD50D5D1B4BDFB50008B061 /* Keyframe.m in Sources */,
+				BAC9CD621B60E63A008644B9 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +542,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rhythmix/Common/Rhythmix-Prefix.pch";
@@ -537,6 +558,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rhythmix/Common/Rhythmix-Prefix.pch";
