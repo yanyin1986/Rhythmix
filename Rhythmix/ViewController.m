@@ -11,21 +11,10 @@
 #import "GlobalSetting.h"
 #import "CGGeometry+Utils.h"
 #import "MBProgressHUD.h"
+#import "Keyframe.h"
+#import "ResultViewController.h"
 
-typedef enum : NSUInteger {
-    KeyFrameActionChange,
-    KeyFrameActionUp,
-    KeyFrameActionDown,
-    KeyFrameActionLeft,
-    KeyFrameActionRight,
-} KeyFrameAction;
 
-@interface KeyFrame : NSObject
-
-@property (nonatomic,assign) double time;
-@property (nonatomic,assign) KeyFrameAction action;
-
-@end
 
 @interface ViewController ()
 
@@ -52,6 +41,7 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _keyFrames = [NSMutableArray array];
     _previewView.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
     [_previewView addGestureRecognizer:tap];
@@ -71,6 +61,15 @@ typedef enum : NSUInteger {
 - (IBAction)backButtonPressed:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)nextButtonPressed:(id)sender
+{
+    ResultViewController *resultViewController = [[ResultViewController alloc] init];
+    resultViewController.keyframes = self.keyFrames;//[NSArray arrayWithArray:];
+    
+    
+    [self.navigationController pushViewController:resultViewController animated:YES];
 }
 
 
@@ -136,6 +135,63 @@ typedef enum : NSUInteger {
 
 - (IBAction)tapHandler:(id)sender
 {
+    [self effect];
+}
+
+/**
+ * next image
+ *
+ */
+- (void)swipe
+{
+    if (_start && _inTitle) {
+        
+        CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        anim.fromValue = @(0.75);
+        anim.toValue = @(0.0);
+        anim.duration = 0.5;
+        anim.fillMode = kCAFillModeBoth;
+        anim.removedOnCompletion = NO;
+        
+        [self addKeyFrameWithAction:KeyFrameActionHideTitle];
+        [_textLayer addAnimation:anim forKey:@"opacity"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.49 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _inTitle = NO;
+        });
+        return;
+    } else if (_start) {
+        long nextIndex = _index + 1;//) % 34;
+        
+        [self addKeyFrameWithAction:KeyFrameActionChange];
+        if (nextIndex >= [[GlobalSetting sharedInstance] selectedAssetsCount]) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [_player pause];
+                _nextButton.enabled = YES;
+                [self addKeyFrameWithAction:KeyFrameActionEnd];
+            });
+        }
+        
+        [CATransaction begin];
+        [CATransaction setAnimationDuration:0.0];
+        
+        for (CALayer *layer  in _previewView.layer.sublayers) {
+            ALAsset *asset = [[GlobalSetting sharedInstance] assetWithIndex:nextIndex];
+            if (asset) {
+                layer.contents = (__bridge id) asset.thumbnail;
+            }
+        }
+        [CATransaction commit];
+        _index ++;
+        [_assetsScrollView setContentOffset:CGPointMake(_assetsScrollView.contentOffset.x + _assetsScrollView.bounds.size.height, 0) animated:YES];
+    }
+
+}
+
+/**
+ * 添加effect效果
+ */
+- (void)effect
+{
     _zPosition ++;
     if (_previewView.layer.sublayers.count > 0) {
         NSInteger count = arc4random() % 4;
@@ -152,6 +208,7 @@ typedef enum : NSUInteger {
             }
         } while(1);
         
+        //[self addKeyFrameWithAction:KeyFrameActionLeft];
         for (NSNumber *index in set) {
             CALayer *layer = [_previewView.layer.sublayers objectAtIndex:[index integerValue]];
             
@@ -172,48 +229,9 @@ typedef enum : NSUInteger {
 {
     switch (sender.state) {
         case UIGestureRecognizerStateEnded:
-        {
-            if (_start && _inTitle) {
-                
-                CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"opacity"];
-                anim.fromValue = @(0.75);
-                anim.toValue = @(0.0);
-                anim.duration = 0.5;
-                anim.fillMode = kCAFillModeBoth;
-                anim.removedOnCompletion = NO;
-                
-                [_textLayer addAnimation:anim forKey:@"opacity"];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.49 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    _inTitle = NO;
-                });
-                return;
-            } else if (_start) {
-                int nextIndex = _index + 1;//) % 34;
-                
-                if (nextIndex > [[GlobalSetting sharedInstance] selectedAssetsCount]) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        [_player pause];
-                        _nextButton.enabled = YES;
-                        
-                    });
-                }
-                
-                [CATransaction begin];
-                [CATransaction setAnimationDuration:0.0];
-                
-                for (CALayer *layer  in _previewView.layer.sublayers) {
-                    ALAsset *asset = [[GlobalSetting sharedInstance] assetWithIndex:nextIndex];
-                    if (asset) {
-                        layer.contents = (__bridge id) asset.thumbnail;
-                    }
-                }
-                [CATransaction commit];
-                _index ++;
-                [_assetsScrollView setContentOffset:CGPointMake(_assetsScrollView.contentOffset.x + _assetsScrollView.bounds.size.height, 0) animated:YES];
-                }
-            }
+            [self swipe];
             break;
-            
+        
         default:
             break;
     }
@@ -276,11 +294,22 @@ typedef enum : NSUInteger {
                         
                         _inTitle = YES;
                         _start = YES;
+                        
+                        [self addKeyFrameWithAction:KeyFrameActionBegin];
                     });
                 });
             });
         });
     }
+}
+
+- (void)addKeyFrameWithAction:(KeyFrameAction)action
+{
+    KeyFrame *kf = [[KeyFrame alloc] init];
+    kf.time = [[NSDate new] timeIntervalSince1970];
+    kf.action = action;
+    
+    [_keyFrames addObject:kf];
 }
 
 
