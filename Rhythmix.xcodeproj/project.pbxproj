@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3511FE031B70B25C0099A6BE /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 3511FE021B70B25C0099A6BE /* Song.m */; };
+		3511FE061B70B2B90099A6BE /* Rhythm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3511FE051B70B2B90099A6BE /* Rhythm.m */; };
+		35986AAE1B70B949005B8367 /* Drag_Me_Down.rhythm in Resources */ = {isa = PBXBuildFile; fileRef = 35986AAD1B70B949005B8367 /* Drag_Me_Down.rhythm */; };
+		35986AB01B70B9F2005B8367 /* Nature.rhythm in Resources */ = {isa = PBXBuildFile; fileRef = 35986AAF1B70B9F2005B8367 /* Nature.rhythm */; };
 		BA6C00E31B3072EB007B935F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6C00E21B3072EB007B935F /* main.m */; };
 		BA6C00E61B3072EB007B935F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6C00E51B3072EB007B935F /* AppDelegate.m */; };
 		BA6C00E91B3072EB007B935F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6C00E81B3072EB007B935F /* ViewController.m */; };
@@ -70,6 +74,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3511FE011B70B25C0099A6BE /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Song.h; path = Model/Song.h; sourceTree = "<group>"; };
+		3511FE021B70B25C0099A6BE /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Song.m; path = Model/Song.m; sourceTree = "<group>"; };
+		3511FE041B70B2B90099A6BE /* Rhythm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rhythm.h; path = Model/Rhythm.h; sourceTree = "<group>"; };
+		3511FE051B70B2B90099A6BE /* Rhythm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rhythm.m; path = Model/Rhythm.m; sourceTree = "<group>"; };
+		35986AAD1B70B949005B8367 /* Drag_Me_Down.rhythm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Drag_Me_Down.rhythm; sourceTree = "<group>"; };
+		35986AAF1B70B9F2005B8367 /* Nature.rhythm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Nature.rhythm; sourceTree = "<group>"; };
 		BA6C00DD1B3072EB007B935F /* Rhythmix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rhythmix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA6C00E11B3072EB007B935F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6C00E21B3072EB007B935F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -248,6 +258,8 @@
 				BA6C010B1B308604007B935F /* run.mp3 */,
 				BA6C00E11B3072EB007B935F /* Info.plist */,
 				BA6C00E21B3072EB007B935F /* main.m */,
+				35986AAD1B70B949005B8367 /* Drag_Me_Down.rhythm */,
+				35986AAF1B70B9F2005B8367 /* Nature.rhythm */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -313,6 +325,10 @@
 			children = (
 				BAD50D5B1B4BDFB50008B061 /* Keyframe.h */,
 				BAD50D5C1B4BDFB50008B061 /* Keyframe.m */,
+				3511FE011B70B25C0099A6BE /* Song.h */,
+				3511FE021B70B25C0099A6BE /* Song.m */,
+				3511FE041B70B2B90099A6BE /* Rhythm.h */,
+				3511FE051B70B2B90099A6BE /* Rhythm.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -398,9 +414,11 @@
 				BA6C01371B30888F007B935F /* 21.JPG in Resources */,
 				BA6C012B1B30888F007B935F /* 9.JPG in Resources */,
 				BA6C01491B308AEB007B935F /* 27.JPG in Resources */,
+				35986AAE1B70B949005B8367 /* Drag_Me_Down.rhythm in Resources */,
 				BA6C01071B3077F9007B935F /* ViewController.xib in Resources */,
 				BA6C012C1B30888F007B935F /* 10.JPG in Resources */,
 				BA6C01311B30888F007B935F /* 15.JPG in Resources */,
+				35986AB01B70B9F2005B8367 /* Nature.rhythm in Resources */,
 				BAC588F71B4BB9D800519235 /* AssetPickerViewController.xib in Resources */,
 				BA6C01361B30888F007B935F /* 20.JPG in Resources */,
 				BAD50D571B4BD8050008B061 /* ResultViewController.xib in Resources */,
@@ -428,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3511FE031B70B25C0099A6BE /* Song.m in Sources */,
 				BA6C00E91B3072EB007B935F /* ViewController.m in Sources */,
 				BAC588F61B4BB9D800519235 /* AssetPickerViewController.m in Sources */,
 				BAC9CD671B60E7BC008644B9 /* SettingViewController.m in Sources */,
@@ -439,6 +458,7 @@
 				BAD50D511B4BC8D50008B061 /* MBProgressHUD.m in Sources */,
 				BAD50D561B4BD8050008B061 /* ResultViewController.m in Sources */,
 				BAC9CD5C1B5F9F19008644B9 /* RMPreviewView.m in Sources */,
+				3511FE061B70B2B90099A6BE /* Rhythm.m in Sources */,
 				BAD50D5D1B4BDFB50008B061 /* Keyframe.m in Sources */,
 				BAC9CD621B60E63A008644B9 /* HomeViewController.m in Sources */,
 			);
